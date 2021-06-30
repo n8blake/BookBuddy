@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useContext } from "react";
-// import actions
+// import actions 
 import { SET_VIEW_MODE, UPDATE_BOOKS, SEARCH, UPDATE_SEARCH_RESULTS, LOADING } from "./actions";
 
 const StoreContext = createContext();

@@ -1,4 +1,4 @@
-/*$theme-colors: (
+$theme-colors: (
 	"primary": #E0D5BF,
 	"secondary":#A58E5D,
 	"danger":#C41A53,
@@ -6,16 +6,4 @@
 	"success":#65BA7D,
 	"info":#BFD7DD,
 	"dark":#4f3f1e
-);*/
-@import './node_modules/bootstrap/scss/bootstrap.scss';
-
-$theme-colors: (
-  "primary":    $primary,
-  "secondary":  $secondary,
-  "success":    $success,
-  "info":       $info,
-  "warning":    $warning,
-  "danger":     $danger,
-  "light":      $light,
-  "dark":       $dark
-) !default;
+);

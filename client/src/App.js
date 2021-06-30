@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Search from "./components/Search";
 import Header from './components/Header';
 import NoMatch from "./pages/NoMatch";
+import { StoreProvider } from './utils/GlobalState';
 
 import './App.scss';
 
@@ -11,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <StoreProvider>
       <Router>
         <main className="container">
         <Switch>
@@ -29,6 +31,7 @@ function App() {
         </Switch>
         </main>
         </Router>
+        </StoreProvider>
     </div>
   );
 }

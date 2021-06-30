@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useStoreContext } from '../../utils/GlobalState';
+import { useStoreContext } from "../../utils/GlobalState";
 import useDebounce from "../../utils/debounceHook";
 import { SEARCH, UPDATE_SEARCH_RESULTS } from '../../utils/actions';
 import './style.scss';
@@ -24,48 +24,18 @@ function SearchControls() {
             });
             dispatch({
                 type: UPDATE_SEARCH_RESULTS,
-                searchResults: state.employees
+                searchResults: state.books
             });
             return;
         }
 
         if(debouncedSearchTerm){
             // set global search term
-            let searchResults;
-            let numberStr = "";
-            for(let c = 0; c < debouncedSearchTerm.length; c++){
-                let cChar = debouncedSearchTerm.charAt(c);
-                if( !isNaN(parseInt(cChar))){
-                    numberStr = numberStr + debouncedSearchTerm.charAt(c);
-                }
-            }
-            // if searchTerm is a number, search phone numbers
-            if(numberStr.length > 0){
-                // look through phone numbers
-                searchResults = state.employees.filter(employee => {
-                    let phoneStr = "";
-                    for(let c = 0; c < employee.phone.length; c++){
-                        let cChar = employee.phone.charAt(c);
-                        if( !isNaN(parseInt(cChar))){
-                            phoneStr = phoneStr + employee.phone.charAt(c);
-                        }
-                    }
-                    return (
-                        phoneStr.indexOf(numberStr) > -1
-                    )
-                })
-            } else {
-                searchResults = state.employees.filter(employee => {
-                    const name = employee.name.first.toLowerCase() + ' ' + employee.name.last.toLowerCase();
-                    return (
-                        name.indexOf(debouncedSearchTerm.toLowerCase()) > -1
-                    )
-                })
-            }
+            
             //console.log(searchResults);
             dispatch({
                 type: UPDATE_SEARCH_RESULTS,
-                searchResults: searchResults
+                searchResults: debouncedSearchTerm
             })
 
         }
