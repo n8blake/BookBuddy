@@ -1,4 +1,4 @@
-@import '../../theme-colors.scss';
+//@import '../../theme-colors.scss';
 
 div {
 	margin: auto;
@@ -6,16 +6,12 @@ div {
 	text-align: center;
 }
 
-h1 {
+/*h1 {
 	font-family: rosella-deco, sans-serif;
 	font-weight: light;
 	font-size: 28pt;
 	color: map-get($theme-colors, "primary");
-}
-
-.header-embellishment {
-	width: 22pt;
-}
+}*/
 
 @media only screen and (max-width: 375px) {
     h1 {
