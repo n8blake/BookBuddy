@@ -3,15 +3,10 @@ import axios from "axios";
 
 export default {
     // Get all employees
-    getSearchResults: function(){
-        return {}
-        //return axios.get('');
-        // const results = await fetch('https://randomuser.me/api/?inc=id,name,email,dob,phone,cell,picture&results=50')
-		// 	.then(response => response.json())
-        //     .then((json) => {
-        //         return json;
-        //     });
-        // return results;
+    search: function(queryString){
+        const searchURL = 'https://www.googleapis.com/books/v1/volumes?q=' + queryString;
+        console.log(`Getting ${queryString}`)
+        return axios.get(searchURL);
     },
     // Get books from our own api
     getBooks: function(bookObj){

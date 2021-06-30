@@ -17,7 +17,7 @@ const reducer = (state, action) => {
         case UPDATE_BOOKS:
             return {
                 ...state,
-                employees: [...action.employees],
+                books: [...action.books],
                 loading: false
             }
         case SEARCH:
@@ -28,7 +28,7 @@ const reducer = (state, action) => {
         case UPDATE_SEARCH_RESULTS:
             return {
                 ...state,
-                searchResults: [...action.searchResults]
+                searchResults: {...action.searchResults}
             }
         case LOADING: 
             return {
