@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import useDebounce from "../../utils/debounceHook";
 import { SEARCH, UPDATE_SEARCH_RESULTS } from '../../utils/actions';
+import API from "../../utils/API";
 import './style.scss';
 
 function SearchControls() {
@@ -9,7 +10,7 @@ function SearchControls() {
     const [state, dispatch] = useStoreContext();
     const [search, setSearch] = useState("");
 
-    const debouncedSearchTerm = useDebounce(search, 100);
+    const debouncedSearchTerm = useDebounce(search, 500);
 
     const handleInputChange = event => {
         setSearch(event.target.value);
@@ -31,15 +32,23 @@ function SearchControls() {
 
         if(debouncedSearchTerm){
             // set global search term
-            
-            //console.log(searchResults);
             dispatch({
-                type: UPDATE_SEARCH_RESULTS,
-                searchResults: debouncedSearchTerm
-            })
+                type: SEARCH,
+                searchTerm: debouncedSearchTerm
+            });
+            console.log(`Starting search...`);
+            API.search(state.searchTerm)
+                .then(results => {
+                    console.log("Searched!");
+                    console.log(results);
+                    dispatch({
+                    	type: UPDATE_SEARCH_RESULTS,
+                    	searchResults: results.data
+                    });
+                });
 
         }
-    }, [debouncedSearchTerm, dispatch, search, state.employees, state.searchTerm]);
+    }, [debouncedSearchTerm, dispatch, search, state.books, state.searchTerm]);
 
     return (
         <div className="d-flex jusitify-content-center">    
