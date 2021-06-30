@@ -3,8 +3,8 @@ import './style.scss';
 
 function Header() {
 	return(
-		<div>
-			<h1>Book Buddy</h1>
+		<div className="jumbotron">
+			<h1 className="display">Book Buddy</h1>
 		</div>
 	);
 }
