@@ -27,7 +27,7 @@ function SearchResults(){
 	},[]);
 
 	return(
-		<div>
+		<div id="search-results-container">
 			{ state.searchResults.items ? (
 				state.searchResults.items.map(item => {
 					const book = item.volumeInfo;
@@ -40,7 +40,7 @@ function SearchResults(){
 				})
 				//<div>results</div>
 			) : (
-				<div>no resutls</div>
+				<div>no results</div>
 			)}
 		</div>
 	);

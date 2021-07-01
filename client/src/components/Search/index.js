@@ -9,7 +9,7 @@ class Search extends React.Component {
 
 	render(){
 		return(
-			<div>
+			<div className="search-component">
 				<SearchControls />
 				<SearchResults />
 			</div>

@@ -1,26 +1,42 @@
 @import '../../theme-colors.scss';
 
-.search-wrapper {
+
+#search-controls-container-bg {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    background-color: $latte;
+}
+
+#search-controls-container-w {
+    margin: auto;
+    width: 320pt;
     display: flex;
     flex: 1;
-    padding: 6pt 15pt 1pt 6pt;
-    margin: 0pt 6pt 10pt 6pt;
+    
+}
+
+.search-wrapper { 
+    padding: 6pt 6pt 4pt 6pt;
+    margin: 0pt 6pt 30pt 6pt;
     border: none;
     border-bottom: solid;
-    border-color: map-get($theme-colors, "secondary");
+    border-color: $dark-brown;
     border-width: 1pt;
+    background-color: $latte;
+    width: 100%;
 }
 
 input {
-    background-color: white;
-    color: black;
+    background-color: $latte;
+    color: $dark-blue;
     border: none;
     font-size: 18pt;
 }
 
 input:focus {
     border: none;
-    background-color: white;
+    background-color: $latte;
     outline: none !important;
 }
 

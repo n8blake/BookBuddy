@@ -51,8 +51,8 @@ function SearchControls() {
     }, [debouncedSearchTerm, dispatch, search, state.books, state.searchTerm]);
 
     return (
-        <div className="d-flex jusitify-content-center">    
-            <div className="d-flex justify-content-center">
+        <div id="search-controls-container-bg">    
+            <div id="search-controls-container-w">
                 <div className="search-wrapper">
                     <i className="bi bi-search m-2"></i>
                     <input className="ml-2" type="text" onChange={handleInputChange} />
