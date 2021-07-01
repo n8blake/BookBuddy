@@ -5,6 +5,7 @@ import { useStoreContext } from '../../utils/GlobalState';
 import './SearchResults.scss';
 import FastAverageColor from 'fast-average-color';
 import Shelf from '../Shelf/Shelf';
+import Book from '../Book/Book';
 
 function SearchResults(){
 	const fac = new FastAverageColor();
@@ -12,6 +13,7 @@ function SearchResults(){
 	const [shelves, setShelves] = useState();
 	
 	const sortBooks = (books) => {
+		const colors = ['red', 'orange', 'yellow', 'cyan', 'green', 'blue', 'purple', 'brown'];
 		const shelves = [];
 		// the incoming books into groups of 5
 		// put them on a shelf
@@ -20,40 +22,18 @@ function SearchResults(){
 		for(let shelfIndex = 0; shelfIndex < numShelves; shelfIndex++){
 			const shelf = [];
 			for(let bookOnShelfIndex = 0; 
-				(bookOnShelfIndex < 5 && bookIndex < books.length); 
+				(bookOnShelfIndex < 10 && bookIndex < books.length); 
 				bookOnShelfIndex++){
 					shelf.push(books[bookIndex]);
+					if(books[bookIndex].volumeInfo){
+						const colorIndex = Math.floor(Math.random() * colors.length);
+						books[bookIndex].volumeInfo.color = colors[colorIndex];
+					}
 					bookIndex++;
-					// console.log("getting color");
-					// if(books[bookIndex] && books[bookIndex].volumeInfo){
-					// 	console.log(books[bookIndex].volumeInfo);
-					// 	getBookColor(books[bookIndex].volumeInfo);
-					// }
-					
 			}
 			shelves.push(shelf);
 		}
 		setShelves(shelves);
-	}
-
-	const getBookColor = async (book) => {
-		if(book && book.imageLinks){
-			// Need to figure out Cross origin issue...
-			//
-			// const img = new Image();
-			// img.crossOrigin = 'anonymous';
-			// img.src = book.imageLinks.smallThumbnail;
-			// fac.getColorAsync(img)
-			// 	.then(color => {
-			// 		console.log('Color:' );
-			// 		console.log(color);
-			// 		book.color = color;
-			// 	})
-			// 	.catch(e => {
-			// 		console.log(e);
-			// 	});
-			return '#4C0F16';
-		}
 	}
 
 	useEffect(() => {
@@ -76,19 +56,13 @@ function SearchResults(){
 							{shelf.map(item => {
 								const book = item.volumeInfo;
 								return (
-									<div key={item.id} className="d-flex justify-content-left">
-										{book.imageLinks ? (
-											<img alt="" src={book.imageLinks.smallThumbnail} />
-										):(
-											<div>no image</div>
-										)}
-										
-										<div>{book.title}</div>	
-									</div>
+									<Book book={book} ></Book>
 								)
 							})}
-						</Shelf>)
-					})}
+						</Shelf>
+						)
+					})
+					}
 				</div>
 			) : (
 				<div>no results</div>
