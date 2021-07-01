@@ -3,10 +3,11 @@ import { UPDATE_BOOKS, UPDATE_SEARCH_RESULTS, LOADING } from '../../utils/action
 import API from '../../utils/API';
 import { useStoreContext } from '../../utils/GlobalState';
 import './SearchResults.scss';
-
+import FastAverageColor from 'fast-average-color';
 import Shelf from '../Shelf/Shelf';
 
 function SearchResults(){
+	const fac = new FastAverageColor();
 	const [state, dispatch] = useStoreContext();
 	const [shelves, setShelves] = useState();
 	
@@ -23,10 +24,36 @@ function SearchResults(){
 				bookOnShelfIndex++){
 					shelf.push(books[bookIndex]);
 					bookIndex++;
+					// console.log("getting color");
+					// if(books[bookIndex] && books[bookIndex].volumeInfo){
+					// 	console.log(books[bookIndex].volumeInfo);
+					// 	getBookColor(books[bookIndex].volumeInfo);
+					// }
+					
 			}
 			shelves.push(shelf);
 		}
 		setShelves(shelves);
+	}
+
+	const getBookColor = async (book) => {
+		if(book && book.imageLinks){
+			// Need to figure out Cross origin issue...
+			//
+			// const img = new Image();
+			// img.crossOrigin = 'anonymous';
+			// img.src = book.imageLinks.smallThumbnail;
+			// fac.getColorAsync(img)
+			// 	.then(color => {
+			// 		console.log('Color:' );
+			// 		console.log(color);
+			// 		book.color = color;
+			// 	})
+			// 	.catch(e => {
+			// 		console.log(e);
+			// 	});
+			return '#4C0F16';
+		}
 	}
 
 	useEffect(() => {
@@ -35,22 +62,8 @@ function SearchResults(){
 				sortBooks(state.searchResults.items)
 			}
 		}
-		//sortBooks();
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[state.searchResults]);
-
-	//divide books into groups of 5...
-	/*
-	state.searchResults.items.map(item => {
-		const book = item.volumeInfo;
-		return (
-			<div key={item.id} className="d-flex justify-content-left">
-				<img alt="" src={book.imageLinks.smallThumbnail} />
-				<div>{book.title}</div>	
-			</div>
-		)
-	})
-	*/
 
 	return(
 		<div className="container" id="search-results-container">
