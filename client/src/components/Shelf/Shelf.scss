@@ -1,0 +1,21 @@
+@import '../../theme-colors.scss';
+
+.shelf {
+    margin: auto;
+    padding: 20pt 0pt;
+    border: none;
+}
+
+.books-on-shelf-container {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.shelf-base {
+    color: $dark-brown;
+    background-color: $dark-brown;
+    opacity: .8;
+    border-top: 3pt solid;
+    border-radius: 2pt;
+}

@@ -27,17 +27,30 @@
     width: 100%;
 }
 
-input {
-    background-color: $latte;
+textarea {
+    margin: 0pt;
+    padding: 0pt;
+}
+
+#google-books-search-input {
+    background-color: #0000;
     color: $dark-blue;
     border: none;
     font-size: 18pt;
+    text-align: center;
+    transform: translateX(-10pt);
+    transform: translateY(4pt);
+    resize: none;
 }
 
-input:focus {
+#google-books-search-input:focus {
     border: none;
-    background-color: $latte;
+    background-color: #0000;
     outline: none !important;
+}
+
+#search-icon {
+    transform: translateX(-5pt);
 }
 
 @media only screen and (max-width: 750px) {

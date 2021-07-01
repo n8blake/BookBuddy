@@ -9,11 +9,20 @@ function SearchControls() {
 
     const [state, dispatch] = useStoreContext();
     const [search, setSearch] = useState("");
+    const [searchBoxHeight, setSearchBoxHeight] = useState("1");
 
     const debouncedSearchTerm = useDebounce(search, 500);
 
     const handleInputChange = event => {
+        const searchTerm = event.target.value;
         setSearch(event.target.value);
+        if(searchTerm.length / 20 > 1){
+            console.log(Math.round(searchTerm.length / 20));
+            console.log(searchTerm.length / 20);
+            setSearchBoxHeight(Math.round(searchTerm.length / 20));
+        } else {
+            setSearchBoxHeight(1);
+        }
     }
 
     useEffect(() => {
@@ -36,11 +45,11 @@ function SearchControls() {
                 type: SEARCH,
                 searchTerm: debouncedSearchTerm
             });
-            console.log(`Starting search...`);
+            //console.log(`Starting search...`);
             API.search(state.searchTerm)
                 .then(results => {
-                    console.log("Searched!");
-                    console.log(results);
+                    //console.log("Searched!");
+                    //console.log(results);
                     dispatch({
                     	type: UPDATE_SEARCH_RESULTS,
                     	searchResults: results.data
@@ -54,8 +63,8 @@ function SearchControls() {
         <div id="search-controls-container-bg">    
             <div id="search-controls-container-w">
                 <div className="search-wrapper">
-                    <i className="bi bi-search m-2"></i>
-                    <input className="ml-2" type="text" onChange={handleInputChange} />
+                    <i id="search-icon" className="bi bi-search mr-4"></i>
+                    <textarea rows={searchBoxHeight} id="google-books-search-input" type="text" onChange={handleInputChange} ></textarea>
                 </div>
             </div>
         </div>
