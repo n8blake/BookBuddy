@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-//import Search from "./components/Search";
-import SearchControls from "./components/SearchControls";
-import SearchResults from "./components/SearchResults/SearchResults";
+import SearchPage from "./pages/SearchPage";
+import FavoritesPage from "./pages/FavoritesPage";
+//import SearchControls from "./components/SearchControls";
+//import SearchResults from "./components/SearchResults/SearchResults";
 import Header from './components/Header';
 import NoMatch from "./pages/NoMatch";
 import { StoreProvider } from './utils/GlobalState';
@@ -13,17 +14,16 @@ import './App.scss';
 function App() {
   return (
       <StoreProvider>
-      <Header />
+      
       
       <Router>
-        
+        <Header />
         <Switch>
           <Route exact path={["/", "/search"]}>
-            <SearchControls />
-            <SearchResults />
+            <SearchPage />
           </Route>
-          <Route exact path={["/library", "/books"]}>
-            <div>saved books page</div>
+          <Route exact path={["/library", "/books", "/favorites", "/loved"]}>
+            <FavoritesPage />
           </Route>
           <Route exact path={["/books/:id"]}>
             <div>individual book page</div>
