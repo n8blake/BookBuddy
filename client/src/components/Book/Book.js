@@ -1,44 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './Book.scss';
 import './book-colors.scss';
 
 function Book(props) {
 
-    const [color, setColor] = useState('blue');
-
-	const getBookColor = () => {
-		//if(props.img){
-			// Need to figure out Cross origin issue...
-			//
-			// const img = new Image();
-			// img.crossOrigin = 'anonymous';
-			// img.src = book.imageLinks.smallThumbnail;
-			// fac.getColorAsync(img)
-			// 	.then(color => {
-			// 		console.log('Color:' );
-			// 		console.log(color);
-			// 		book.color = color;
-			// 	})
-			// 	.catch(e => {
-			// 		console.log(e);
-			// 	});
-			//return '#4C0F16';
-		//}
-		//return '#2B3547';
-        const colors = ['red', 'orange', 'yellow', 'cyan', 'green', 'blue', 'purple', 'brown']
-        const colorIndex = Math.floor(Math.random() * colors.length);
-        return colors[colorIndex];
-	}
-
-    useEffect(() => {
-        const col = getBookColor();
-        console.log(col);
-        setColor(col);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
     return (
-        <div className={'book book-' + color}>
+        <div key={props.book.id} onClick={() => props.action(props.book)} className={'book book-' + props.book.color} data-item-id={props.id}>
             
             <div className="book-spine-content-container">
             <div className="book-favorite-indicator-container">

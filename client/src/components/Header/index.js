@@ -12,13 +12,13 @@ function Header() {
 			<nav className="pageLinkBtn">
 			{((location.pathname.toLowerCase() ===  '/search') ||  location.pathname.toLowerCase() ===  '/' ) ? (
 				<Link to="/favorites" style={{ textDecoration: 'none' }}>
-					<i class="bi bi-heart"></i>
-					<div class="link-text">favorites</div>
+					<i className="bi bi-heart"></i>
+					<div className="link-text">favorites</div>
 				</Link>
 			) : (
 				<Link to="/search" style={{ textDecoration: 'none' }}>
-					<i class="bi bi-search"></i>
-					<div class="link-text">search</div>
+					<i className="bi bi-search"></i>
+					<div className="link-text">search</div>
 				</Link>
 			)}
 			</nav>

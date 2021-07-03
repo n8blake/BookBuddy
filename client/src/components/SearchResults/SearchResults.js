@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { UPDATE_BOOKS, UPDATE_SEARCH_RESULTS, LOADING } from '../../utils/actions';
+import { SET_ACTIVE_BOOK } from '../../utils/actions';
 import API from '../../utils/API';
 import { useStoreContext } from '../../utils/GlobalState';
 import './SearchResults.scss';
@@ -26,7 +26,7 @@ function SearchResults(){
 				bookOnShelfIndex++){
 					shelf.push(books[bookIndex]);
 					if(books[bookIndex].volumeInfo){
-						const colorIndex = Math.floor(Math.random() * colors.length);
+						const colorIndex = Math.floor(Math.random() * (colors.length - 1));
 						books[bookIndex].volumeInfo.color = colors[colorIndex];
 					}
 					bookIndex++;
@@ -34,6 +34,14 @@ function SearchResults(){
 			shelves.push(shelf);
 		}
 		setShelves(shelves);
+	}
+
+	const setActiveBook = (book) => {
+		console.log(book);
+		dispatch({
+			type: SET_ACTIVE_BOOK,
+			activeBook: book
+		});
 	}
 
 	useEffect(() => {
@@ -55,8 +63,9 @@ function SearchResults(){
 						<Shelf key={shelves.indexOf(shelf)}>
 							{shelf.map(item => {
 								const book = item.volumeInfo;
+								book.id = item.id;
 								return (
-									<Book book={book} ></Book>
+									<Book book={book} action={setActiveBook}></Book>
 								)
 							})}
 						</Shelf>
