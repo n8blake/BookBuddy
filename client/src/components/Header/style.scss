@@ -1,22 +1,48 @@
 @import '../../theme-colors.scss';
 
 .jumbotron {
+	position: relative;
 	margin: auto;
 	margin-top: 0pt;
 	margin-bottom: 10pt;
-	padding-top: 30pt;
-	padding-bottom: 20pt;
+	padding-top: 10pt;
+	padding-bottom: 0pt;
 	margin-bottom: 0pt;
 	text-align: center;
 	background-color: $latte;
 }
 
-h1 {
-	font-weight: bolder;
+.pageLinkBtn {
+	margin-top: 8pt;
+	font-size: 18pt;
+	opacity: .25;
+	transition: opacity .25s;
+}
+
+.link-text {
+	margin-top: -2pt;
+	opacity: 0;
+	font-size: 12pt;
+	font-style: italic;
+	text-decoration: none !important;
+	transition: opacity .25s;
+}
+
+.pageLinkBtn:hover {
+	opacity: 1;
+
+	.link-text {
+		opacity: 1;
+	}
+}
+
+.hero-text {
+	font-family: ivypresto-display, garamond, serif;
+	font-weight: 700;
 	font-size: 48pt;
 }
 
-p {
+.hero-subtitle {
 	font-family: ivypresto-text, garamond, serif;
 	font-weight: 100;
 	font-style: italic;
@@ -27,7 +53,13 @@ p {
 }
 
 @media only screen and (max-width: 375px) {
-    h1 {
+    .hero-text {
+		font-family: ivypresto-display, garamond, serif;
+		font-weight: 700;
         font-size: 22pt;
     }
+	.hero-subtitle {
+		margin-top: -6pt;
+		font-size: 10pt;
+	}
 }
