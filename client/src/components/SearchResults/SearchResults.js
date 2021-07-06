@@ -57,15 +57,15 @@ function SearchResults(){
 		<div className="container" id="search-results-container">
 			
 			{ shelves ? (
-				<div>
-					{shelves.map(shelf => {
+				<div key={1}>
+					{shelves.map((shelf, index) => {
 						return (
-						<Shelf key={shelves.indexOf(shelf)}>
-							{shelf.map(item => {
+						<Shelf key={index} index={shelves.indexOf(shelf)}>
+							{shelf.map((item, item_index) => {
 								const book = item.volumeInfo;
 								book.id = item.id;
 								return (
-									<Book book={book} action={setActiveBook}></Book>
+									<Book key={item_index} index={'book-key' + item.id} book={book} action={setActiveBook}></Book>
 								)
 							})}
 						</Shelf>

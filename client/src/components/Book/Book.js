@@ -5,7 +5,7 @@ import './book-colors.scss';
 function Book(props) {
 
     return (
-        <div key={props.book.id} onClick={() => props.action(props.book)} className={'book book-' + props.book.color} data-item-id={props.id}>
+        <div key={props.index} onClick={() => props.action(props.book)} className={'book book-' + props.book.color} data-item-id={props.id}>
             
             <div className="book-spine-content-container">
             <div className="book-favorite-indicator-container">
@@ -33,9 +33,9 @@ function Book(props) {
                 <hr></hr>
                 {
                     props.book.authors ? (
-                        props.book.authors.map(author => {
+                        props.book.authors.map((author, index) => {
                             return (
-                            <div>
+                            <div key={index}>
                                 <small>{author}</small>
                             </div>
                             )

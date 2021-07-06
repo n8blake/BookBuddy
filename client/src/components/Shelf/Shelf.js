@@ -6,8 +6,8 @@ function Shelf(props) {
     //const [books, setBooks] = useState([]);
     // <hr className="shelf-base" />
     return(
-        <div className="shelf">
-            <div className="books-on-shelf-container">{props.children}</div>
+        <div className="shelf" key={props.index}>
+            <div key={'sc-' + props.index} className="books-on-shelf-container">{props.children}</div>
             
         </div>
         

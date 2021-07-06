@@ -1,44 +1,110 @@
 @import '../../theme-colors.scss';
 
-/*.active-book-container {
-    position: fixed;
-	top: 50%;
-	left: 50%;
-    height: 90%;
-	width: 80%;
-    background-color: #F002;
-    transform: translate(-50%, -50%);
-    -webkit-backdrop-filter: blur(20px);
-	backdrop-filter: blur(20px);
-    border-radius: 6pt;
-    border: solid 1pt;
-    border-color: #F006;;
-}*/
-
-.colored-backdrop {
+.blurred-backdrop {
     position: absolute;
-	transform: translate(-50%, -50%);
-	top: 50%;
+	transform: translate(-50%, 0%);
+	top: 20pt;
 	left: 50%;
-    height: 90%;
 	width: 80%;
     -webkit-backdrop-filter: blur(30px);
 	backdrop-filter: blur(30px);
     filter: drop-shadow(0 0 0.75rem #282a2c);
+    border-radius: 6pt;
+    margin-bottom: 20pt;
 }
 
-.colored-backdrop-red {
-    background-color: #F9D9DD66;
-}
-
-
-
-.enlarged-screen-shot {
-	position: absolute;
-	top: 50%;
+/*.blurred-backdrop-false {
+    position: absolute;
+	transform: translate(-50%, 0%);
+	top: 20pt;
 	left: 50%;
-	transform: translate(-50%, -50%);
-	max-height: 90%;
-	max-width: 80%;
-	/*filter: drop-shadow(0 0 0.75rem #9fa4ad);*/
+	width: 80%;
+    background-color: rgba($color: #FFFFFF, $alpha: 1.0);
+    filter: drop-shadow(0 0 0.75rem #282a2c);
+    border-radius: 6pt;
+    margin-bottom: 20pt;
+}*/
+
+.colored-red {
+    /*background-color: #F9D9DD66;*/
+    background-color: rgba($light-pink, $alpha: 0.6);
+    color: $dark-red;
+}
+.colored-orange {
+    background-color: rgba($light-orange, $alpha: 0.6);
+    color: $dark-orange;
+}
+.colored-yellow {
+    background-color: rgba($light-yellow, $alpha: 0.6);
+    color: $dark-yellow;
+}
+.colored-green {
+    background-color: rgba($light-green, $alpha: 0.6);
+    color: $dark-green;
+}
+.colored-cyan {
+    background-color: rgba($light-cyan, $alpha: 0.6);
+    color: $dark-teal;
+}
+.colored-blue {
+    background-color: rgba($light-blue, $alpha: 0.6);
+    color: $dark-blue;
+}
+.colored-purple {
+    background-color: rgba($light-purple, $alpha: 0.6);
+    color: $dark-purple;
+}
+.colored-brown {
+    background-color: rgba($light-brown, $alpha: 0.6);
+    color: $dark-brown;
+}
+
+.active-book-header {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.active-book-thumbnail {
+    margin: 20pt;
+    flex-grow: 1;
+    max-width: 100pt;
+}
+
+.active-book-title {
+    padding-right: 20pt;
+    flex-grow: 3;
+    font-size: 40pt;
+    margin-top: 30pt;
+    font-weight: 400;
+}
+
+.active-book-author {
+    font-style: italic;
+}
+
+.active-book-description {
+    position: relative;
+    padding: 30pt;
+    font-size: 12pt;
+    line-height: 22pt;
+    overflow: scroll;
+}
+
+.active-book-control-area {
+    position: relative;
+    width: 100%;
+    height: 40pt;
+}
+
+.close-active-action {
+    opacity: .3;
+    position: absolute;
+    background-color: #ffF0;
+    backdrop-filter: none;
+    filter: none;
+    border: none;
+    font-size: 28pt;
+    right: 20pt;
+    top: 10pt;
 }

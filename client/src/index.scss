@@ -3,7 +3,7 @@
 @import './node_modules/bootstrap/scss/bootstrap.scss';
 @import url("https://use.typekit.net/stj3jca.css");
 
-body, p {
+body {
 	color: map-get($theme-colors, "primary");
 	font-family: ivypresto-text, garamond, serif;
 	font-weight: 100;

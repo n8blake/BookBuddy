@@ -49,11 +49,14 @@ function SearchControls() {
             API.search(state.searchTerm)
                 .then(results => {
                     //console.log("Searched!");
-                    //console.log(results);
-                    dispatch({
-                    	type: UPDATE_SEARCH_RESULTS,
-                    	searchResults: results.data
-                    });
+                    console.log(results.status);
+                    if(results.data){
+                        dispatch({
+                            type: UPDATE_SEARCH_RESULTS,
+                            searchResults: results.data
+                        });
+                    }
+                    
                 });
 
         }
