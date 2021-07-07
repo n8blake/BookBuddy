@@ -31,19 +31,26 @@ function Book(props) {
                 )}
             </div>
             <div className="book-title-container">
-                <div className="book-title">
-                     {props.book.title}
-                </div>
-            </div>
-            {props.book.title.length < 20 ? (
-                <div className="variable-width-spacer-s"></div>
+            {props.book.title ? (
+                <span>
+                    <div className="book-title">
+                        {props.book.title}
+                    </div>
+                    {props.book.title.length < 20 ? (
+                        <div className="variable-width-spacer-s"></div>
+                    ) : (
+                        props.book.title.length < 40 ? (
+                            <div className="variable-width-spacer-m"></div>
+                        ) : (
+                            <div className="variable-width-spacer-l"></div>
+                        )   
+                    )}
+                </span>
             ) : (
-                props.book.title.length < 40 ? (
-                    <div className="variable-width-spacer-m"></div>
-                ) : (
-                    <div className="variable-width-spacer-l"></div>
-                )   
+                <div></div>
             )}
+            </div>
+            
             
             <div className="book-author">
                 <hr></hr>

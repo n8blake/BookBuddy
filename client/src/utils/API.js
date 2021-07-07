@@ -27,5 +27,11 @@ export default {
         console.log("Removing");
         const bookURL = '/api/books/' + id;
         return axios.delete(bookURL);
+    },
+    // get a color for a book
+    getBookColor: function(url){
+        const requestBody = {url: url}
+        const colorURL = '/api/color/';
+        return axios.post(colorURL, requestBody);
     }
 };

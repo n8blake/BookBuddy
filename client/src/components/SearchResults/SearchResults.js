@@ -12,8 +12,8 @@ function SearchResults(){
 	const [state, dispatch] = useStoreContext();
 	const [shelves, setShelves] = useState();
 	
-	const sortBooks = (books) => {
-		const colors = ['red', 'orange', 'yellow', 'cyan', 'green', 'blue', 'purple', 'brown'];
+	const sortBooks = async (books) => {
+		//const colors = ['red', 'orange', 'yellow', 'cyan', 'green', 'blue', 'purple', 'brown'];
 		const shelves = [];
 		// the incoming books into groups of 5
 		// put them on a shelf
@@ -26,8 +26,18 @@ function SearchResults(){
 				bookOnShelfIndex++){
 					shelf.push(books[bookIndex]);
 					if(books[bookIndex].volumeInfo){
-						const colorIndex = Math.floor(Math.random() * (colors.length - 1));
-						books[bookIndex].volumeInfo.color = colors[colorIndex];
+						const book = books[bookIndex].volumeInfo;
+						if(book.imageLinks){
+							const bookImageURL = books[bookIndex].volumeInfo.imageLinks.thumbnail;
+							await API.getBookColor(bookImageURL).then(result => {
+								console.log(result);
+								book.color = result.data;
+							});
+						} else {
+							book.color = 'red';
+						}
+						//const colorIndex = Math.floor(Math.random() * (colors.length - 1));
+						//books[bookIndex].volumeInfo.color = colors[colorIndex];
 					}
 					bookIndex++;
 			}

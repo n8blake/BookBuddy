@@ -8,6 +8,7 @@ const BookSchema = new Schema({
     link: { type: String },
     image: { type: String },
     authors: { type: Array },
+    color: {type: String},
     googleBooksId: {type: String, required: true }
 });
 

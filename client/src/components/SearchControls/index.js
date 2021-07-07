@@ -16,10 +16,11 @@ function SearchControls() {
     const handleInputChange = event => {
         const searchTerm = event.target.value;
         setSearch(event.target.value);
-        if(searchTerm.length / 20 > 1){
-            console.log(Math.round(searchTerm.length / 20));
-            console.log(searchTerm.length / 20);
-            setSearchBoxHeight(Math.round(searchTerm.length / 20));
+        const maxLineLength = 17;
+        if(searchTerm.length / maxLineLength > 1){
+            //console.log(Math.round(searchTerm.length / 10));
+            //console.log(searchTerm.length / 10);
+            setSearchBoxHeight(Math.round(searchTerm.length / maxLineLength));
         } else {
             setSearchBoxHeight(1);
         }

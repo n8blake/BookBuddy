@@ -33,7 +33,7 @@ function colorDistanceRGB(r1, r2, g1, g2, b1, b2){
 
 router.post("/", (request, response) => {
     if(request.body.url){
-        console.log(request.body.url);
+        //console.log(request.body.url);
         getAverageColor(request.body.url).then(avgImgColor => {
             //console.log(color);
             let closestColor = 'red';

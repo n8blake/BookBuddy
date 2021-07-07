@@ -50,6 +50,7 @@ function ActiveBook() {
         book.link = state.activeBook.infoLink;
         book.image = state.activeBook.imageLinks.thumbnail;
         book.authors = state.activeBook.authors;
+        book.color = state.activeBook.color;
         API.postFavorite(book).then(response => {
             console.log(response);
             API.getBooks().then(results => {
