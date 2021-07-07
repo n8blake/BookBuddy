@@ -8,12 +8,10 @@ function ActiveBook() {
     const [book, setBook] = useState({});
     const [bookMarkIcon, setBookMarkIcon] = useState("bi bi-bookmark-heart-fill");
 	const [state, dispatch] = useStoreContext();
-    //const isFirefox = typeof InstallTrigger !== 'undefined';
 
     useEffect(() => {
         if(state.activeBook){
             setBook(state.activeBook);
-            //setBlur(isFirefox);
         }
     }, [state.activeBook]);
     
@@ -136,7 +134,7 @@ function ActiveBook() {
                     {book.description ? (
                         <article className="active-book-description">{book.description}</article>
                     ) : (
-                        <span className="active-book-description">This title has no provided description.</span>
+                        <article className="active-book-description">This title has no provided description.</article>
                     )}
                 </div>
             </div>

@@ -11,6 +11,8 @@
     flex-direction: row;
     overflow: scroll;
     padding: 20pt;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
 .shelf-base {
@@ -20,3 +22,7 @@
     border-top: 3pt solid;
     border-radius: 2pt;
 }
+
+.books-on-shelf-container::-webkit-scrollbar {
+    display: none;
+  }
