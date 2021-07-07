@@ -1,7 +1,10 @@
 const router = require("express").Router();
 const bookRoutes = require("./books");
+const colorRoute = require("./color");
 
-// Portfolio Item routes
+// books routes
 router.use("/books", bookRoutes);
+
+router.use("/color", colorRoute);
 
 module.exports = router;

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -17,8 +18,6 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-// Calling it BookBuddy, not GoogleBooks because it's more original
-// If you take points off for that, that's petty...
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/bookbuddy-n8blake"
 );
