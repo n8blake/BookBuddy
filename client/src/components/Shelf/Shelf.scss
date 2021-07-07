@@ -2,7 +2,6 @@
 
 .shelf {
     margin: auto;
-    padding: 20pt 0pt;
     border: none;
 }
 
@@ -11,6 +10,7 @@
     flex: 1;
     flex-direction: row;
     overflow: scroll;
+    padding: 20pt;
 }
 
 .shelf-base {

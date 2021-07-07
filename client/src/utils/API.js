@@ -10,6 +10,22 @@ export default {
     },
     // Get books from our own api
     getBooks: function(bookObj){
-        return {}
+        let getBooksURL = '/api/books/';
+        if(bookObj){
+            // modify url to get book url
+        }
+        return axios.get(getBooksURL);
+    },
+    // post a new favorite
+    postFavorite: function(bookObj){
+        console.log("posting");
+        const booksURL = '/api/books/';
+        return axios.post(booksURL, bookObj);
+    },
+    // remove a favorite
+    removeFavorite: function(id){
+        console.log("Removing");
+        const bookURL = '/api/books/' + id;
+        return axios.delete(bookURL);
     }
 };

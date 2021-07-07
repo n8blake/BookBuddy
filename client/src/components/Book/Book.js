@@ -2,14 +2,30 @@ import React from 'react';
 import './Book.scss';
 import './book-colors.scss';
 
+import { useStoreContext } from "../../utils/GlobalState";
+
 function Book(props) {
+
+    const [state, dispatch] = useStoreContext();
+
+    const isFavorite = (id) => {
+        let isFavorite = false;
+        if(state.books){
+            state.books.forEach(book => {
+                if(book.googleBooksId){
+                    if(book.googleBooksId === id) isFavorite = true;
+                } 
+            })
+        }
+        return isFavorite;
+    }
 
     return (
         <div key={props.index} onClick={() => props.action(props.book)} className={'book book-' + props.book.color} data-item-id={props.id}>
             
             <div className="book-spine-content-container">
             <div className="book-favorite-indicator-container">
-                {props.book.isFavorite ? (<i class="bi bi-bookmark-heart-fill"></i>) :
+                {isFavorite(props.book.googleBooksId) || isFavorite(props.book.id)  ? (<i class="bi bi-bookmark-heart-fill"></i>) :
                 (
                     <span></span>
                 )}

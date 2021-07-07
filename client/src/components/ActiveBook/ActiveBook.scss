@@ -67,8 +67,13 @@
 
 .active-book-thumbnail {
     margin: 20pt;
-    flex-grow: 1;
+    margin-right: 0pt;
+    flex-grow: 1 1;
     max-width: 100pt;
+    max-height: 300pt;
+    display: block;
+    width: auto;
+    height: auto;
 }
 
 .active-book-title {
@@ -76,11 +81,17 @@
     flex-grow: 3;
     font-size: 40pt;
     margin-top: 30pt;
+    margin-left: 20pt;
     font-weight: 400;
 }
 
 .active-book-author {
     font-style: italic;
+    margin-left: 20pt;
+}
+
+.active-book-date {
+    margin-left: 20pt;
 }
 
 .active-book-description {
@@ -106,5 +117,29 @@
     border: none;
     font-size: 28pt;
     right: 20pt;
+    top: 10pt;
+}
+
+.mark-favorite-action {
+    opacity: .3;
+    position: absolute;
+    background-color: #ffF0;
+    backdrop-filter: none;
+    filter: none;
+    border: none;
+    font-size: 28pt;
+    left: 20pt;
+    top: 10pt;
+}
+
+.unmark-favorite-action {
+    opacity: .3;
+    position: absolute;
+    background-color: #ffF0;
+    backdrop-filter: none;
+    filter: none;
+    border: none;
+    font-size: 28pt;
+    left: 20pt;
     top: 10pt;
 }
