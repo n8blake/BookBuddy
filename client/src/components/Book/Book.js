@@ -25,7 +25,7 @@ function Book(props) {
             
             <div className="book-spine-content-container">
             <div className="book-favorite-indicator-container">
-                {isFavorite(props.book.googleBooksId) || isFavorite(props.book.id)  ? (<i class="bi bi-bookmark-heart-fill"></i>) :
+                {isFavorite(props.book.googleBooksId) || isFavorite(props.book.id)  ? (<i className="bi bi-bookmark-heart-fill"></i>) :
                 (
                     <span></span>
                 )}

@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import { SET_ACTIVE_BOOK } from '../../utils/actions';
+import { SET_ACTIVE_BOOK, UPDATE_BOOKS } from '../../utils/actions';
 import API from '../../utils/API';
 import { useStoreContext } from '../../utils/GlobalState';
 import './ActiveBook.scss';
 
 function ActiveBook() {
     const [book, setBook] = useState({});
-    //const [blur, setBlur] = useState(true);
+    const [bookMarkIcon, setBookMarkIcon] = useState("bi bi-bookmark-heart-fill");
 	const [state, dispatch] = useStoreContext();
     //const isFirefox = typeof InstallTrigger !== 'undefined';
 
@@ -54,19 +54,49 @@ function ActiveBook() {
         book.authors = state.activeBook.authors;
         API.postFavorite(book).then(response => {
             console.log(response);
+            API.getBooks().then(results => {
+                console.log(results)
+                if(results.data){
+                    dispatch({
+                        type: UPDATE_BOOKS,
+                        books: results.data
+                    })
+                }
+            })
         });
     }
 
-    const removeFavorite = () => {
-
+    const removeFavorite = (_id) => {
+        console.log(`Removing ${_id}`);
+        API.removeFavorite(_id).then(response => {
+            console.log(response);
+            API.getBooks().then(results => {
+                console.log(results)
+                if(results.data){
+                    dispatch({
+                        type: UPDATE_BOOKS,
+                        books: results.data
+                    })
+                }
+            })
+        });
     }
 
     return(
         <div>{book.title ? (
             <div className={"blurred-backdrop colored-" + book.color }>
-                <div className="active-book-control-area">
+                <div className="active-book-control-area"
+                            onMouseOut={() => setBookMarkIcon("bi bi-bookmark-heart-fill")}>
                     {isFavorite(book.googleBooksId) || isFavorite(book.id) ? (
-                        <button className="unmark-favorite-action" onClick={() => {}}><i className="bi bi-bookmark-heart-fill"></i></button>
+                        <button className="unmark-favorite-action" onMouseOver={() => setBookMarkIcon("bi bi-bookmark-x")} 
+                            onClick={() => {
+                                removeFavorite(book._id);
+                                }}
+                            onMouseDown={() => setBookMarkIcon("bi bi-bookmark-x-fill")}
+                            onMouseUp={() => setBookMarkIcon("bi bi-bookmark-x")}
+                        >
+                            <i className={bookMarkIcon}></i>
+                        </button>
                     ) : (
                         <button className="mark-favorite-action" onClick={() => setFavorite()}><i className="bi bi-bookmark-plus"></i></button>
                     )}
@@ -85,8 +115,6 @@ function ActiveBook() {
                     )}
                     <div>
                     <h1 className="active-book-title">{book.title} </h1>
-                    <p className="active-book-date">SourceID: {book.id} - {isFavorite(book.id)}</p>
-                    <p className="active-book-date">GoogleBooksId: {book.googleBooksId}</p>
                     <p className="active-book-date">{book.publishedDate ? (<span>{book.publishedDate}</span>) : (<span></span>)}</p>
                     {book.authors ? (
                         <p>

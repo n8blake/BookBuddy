@@ -143,3 +143,8 @@
     left: 20pt;
     top: 10pt;
 }
+
+.unmark-favorite-action:hover {
+    color: $danger;
+    opacity: 1;
+}
